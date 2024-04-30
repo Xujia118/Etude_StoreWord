@@ -17,9 +17,6 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const { username } = req.body;
-
-  console.log("username", username);
-
   const sid = sessions.addSession(username);
 
   try {
@@ -38,6 +35,9 @@ router.post("/", async (req, res) => {
     // Put other checks here like username not too long
 
     const newUser = await User.create({ username });
+
+    console.log("Came here")
+
     res.cookie("sid", sid);
     res.status(201).json({ newUser });
   } catch (err) {

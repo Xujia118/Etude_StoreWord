@@ -18,6 +18,22 @@ export function reducer(state, action) {
                 username: action.username,
                 isLoading: true,
             }
+        case ACTIONS.LOG_OUT:
+            return {
+                ...state,
+                loginStatus: LOGIN_STATUS.NOT_LOGGED_IN,
+                username: "",
+                isLoading: false,
+            }
+        case ACTIONS.IS_LOADING:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        
+
+        default:
+            return state;
     }
 }
 

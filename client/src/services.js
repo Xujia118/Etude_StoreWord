@@ -23,7 +23,6 @@ export function fetchLogin(username) {
     },
     body: JSON.stringify({ username }),
   });
-
   return chainPromise(fetched);
 }
 
@@ -34,3 +33,18 @@ export function fetchLogout() {
   return chainPromise(fetched);
 }
 
+export function fetchWord() {
+  const fetched = fetch("/api/v1/word");
+  return chainPromise(fetched);
+}
+
+export function fetchUpdateWord(newWord) {
+  const fetched = fetch("/api/v1/word", {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ newWord }),
+  });
+  return chainPromise(fetched);
+}
