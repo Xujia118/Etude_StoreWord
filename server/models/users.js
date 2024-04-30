@@ -1,0 +1,18 @@
+const User = require("../schemas/User");
+
+function isValid(username) {
+  let isValid = true;
+  isValid = !!username && username.trim();
+  isValid = isValid && username.match(/^[A-Za-z0-9_]+$/);
+  return isValid;
+}
+
+async function userExists(username) {
+  const existingUser = await User.findOne({ username });
+  return existingUser;
+}
+
+module.exports = {
+    isValid,
+    userExists,
+}
