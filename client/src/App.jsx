@@ -38,6 +38,7 @@ function App() {
       })
       .then((data) => {
         console.log(data.storedWord);
+        dispatch({ type: ACTIONS.DISPLAY_WORD, payload: data.storedWord });
       })
       .catch((err) => {
         console.log(err);
@@ -63,6 +64,9 @@ function App() {
       .then(() => {
         return fetchUpdateWord(newWord);
       })
+      .then((data) => {
+        dispatch({ type: ACTIONS.UPDATE_WORD, payload: data.newWord });
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -78,7 +82,7 @@ function App() {
         <FormLogin onLogin={onLogin} onLogout={onLogout} />
       )}
       {state.loginStatus === LOGIN_STATUS.IS_LOGGED_IN && (
-        <WordPage updateWord={updateWord} word={state.word}/>
+        <WordPage updateWord={updateWord} word={state.word} />
       )}
     </div>
   );

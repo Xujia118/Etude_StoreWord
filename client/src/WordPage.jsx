@@ -12,7 +12,11 @@ function WordPage({ updateWord, word }) {
     <div>
       <h1>{word}</h1>
       <form className="form-word" onSubmit={handleSubmit}>
-        <input type="text" onChange={(e) => setInput(e.target.value)} />
+        <input
+          type="text"
+          name="newWord"
+          onChange={(e) => setInput(e.target.value)}
+        />
         <button className="button-update" type="submit">
           Update
         </button>

@@ -21,7 +21,13 @@ router.patch("/", (req, res) => {
   }
 
   const { newWord } = req.body;
-  res.status(200).json({ newWord })
+  
+  const validateError = users.validateWord({ username, newWord });
+  if (validateError) {
+    return res.status(400).json({ error: validateError });
+  }
+
+  res.status(200).json({ newWord });
 });
 
 module.exports = router;
