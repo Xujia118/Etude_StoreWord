@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function WordPage({ updateWord, word }) {
+function WordPage({ onLogout, updateWord, word }) {
   const [input, setInput] = useState("");
 
   function handleSubmit(e) {
@@ -21,6 +21,9 @@ function WordPage({ updateWord, word }) {
           Update
         </button>
       </form>
+      <button className="button-logout" type="button" onClick={onLogout}>
+        Logout
+      </button>
     </div>
   );
 }

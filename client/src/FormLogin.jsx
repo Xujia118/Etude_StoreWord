@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function FormLogin({ onLogin, onLogout }) {
+function FormLogin({ onLogin }) {
   const [input, setInput] = useState("");
 
   function handleSubmitForm(e) {
@@ -16,9 +16,6 @@ function FormLogin({ onLogin, onLogout }) {
           Login
         </button>
       </form>
-      <button className="button-logout" type="button" onClick={onLogout}>
-        Logout
-      </button>
     </div>
   );
 }
