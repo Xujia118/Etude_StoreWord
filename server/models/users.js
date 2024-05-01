@@ -1,6 +1,6 @@
 const User = require("../schemas/User");
 
-const users = {}
+const users = {};
 
 function isValid(username) {
   let isValid = true;
@@ -10,10 +10,17 @@ function isValid(username) {
 }
 
 async function userExists(username) {
-  const existingUser = await User.findOne({ username });
-  return existingUser;
+  try {
+    const existingUser = await User.find({ username: username });
+
+    // mongoDB will return an array. If the user does not exist, the array will be empty
+    return existingUser.length > 0 ? existingUser[0] : null;
+    
+  } catch (err) {
+    console.log(err);
+  }
 }
- 
+
 // function getWord(username) {
 //   const existingUser = userExists(username);
 //   return existingUser.word;
@@ -43,8 +50,8 @@ function validateWord({ username, newWord }) {
 }
 
 module.exports = {
-    isValid,
-    userExists,
-    getWord,
-    validateWord
-}
+  isValid,
+  userExists,
+  getWord,
+  validateWord,
+};
