@@ -1,42 +1,91 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body,
+html {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+main {
+  height: 100vh;
+
+  background-color: #FFFCE8;
+  color: #697A21;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-wrapper {
+  padding: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Login page */
+.login-message {
+  height: 40px;
 }
 
-.card {
-  padding: 2em;
+.input-username,
+.input-word {
+  padding: 0.2rem;
+
+  border: 1px solid lightgray;
+  border-radius: 3px;
+
+  height: 20px;
 }
 
-.read-the-docs {
-  color: #888;
+.input-username,
+.input-word::placeholder {
+  color: lightgray;
+}
+
+.input-error-message {
+  color: red;
+}
+
+[class^="button-"] {
+  background-color: #697A21;
+  color: white;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 0.4rem;
+}
+
+.button-logout {
+  margin-top: 3rem;
+  width: 60px;
+}
+
+[class^="button-"]:hover {
+  cursor: pointer;
+  background-color: #c4c9b0;
+}
+
+.form-game {
+  display: flex;
+  flex-direction: column;
+}
+
+/* data page */
+.stored-word {
+  height: 40px;
+}
+
+.link-logout {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* Invalide username page */
+.username-rules-menu {
+  padding: 0;
+}
+
+.username-rule {
+  list-style: none;
 }

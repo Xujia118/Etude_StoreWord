@@ -10,17 +10,19 @@ function WordPage({ onLogout, updateWord, word }) {
 
   return (
     <div>
-      <h1>{word}</h1>
+      <h1 className="stored-word">{word}</h1>
       <form className="form-word" onSubmit={handleSubmit}>
         <input
+          className="input-word"
           type="text"
           name="newWord"
           onChange={(e) => setInput(e.target.value)}
         />
-        <button className="button-update" type="submit">
+        <button className="button-submit" type="submit">
           Update
         </button>
       </form>
+      {/* <p className="input-error-message">{error}</p> */}
       <button className="button-logout" type="button" onClick={onLogout}>
         Logout
       </button>

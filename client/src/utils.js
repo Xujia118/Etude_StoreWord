@@ -33,7 +33,6 @@ export function onLogin(dispatch) {
         return fetchWord();
       })
       .then((data) => {
-        console.log(data.storedWord);
         dispatch({ type: ACTIONS.DISPLAY_WORD, payload: data.storedWord });
       })
       .catch((err) => {

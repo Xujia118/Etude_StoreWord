@@ -11,10 +11,15 @@ function FormLogin({ onLogin }) {
   return (
     <div>
       <form className="form-login" onSubmit={handleSubmitForm}>
-        <input type="text" onChange={(e) => setInput(e.target.value)} />
+        <input
+          className="input-username"
+          type="text"
+          onChange={(e) => setInput(e.target.value)}
+        />
         <button className="button-login" type="submit">
           Login
         </button>
+        {/* <p className="input-error-message">{error}</p> */}
       </form>
     </div>
   );

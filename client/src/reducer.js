@@ -15,7 +15,7 @@ export function reducer(state, action) {
             return {
                 ...state,
                 loginStatus: LOGIN_STATUS.IS_LOGGED_IN,
-                username: action.username,
+                username: action.payload,
                 isLoading: true,
             }
         case ACTIONS.LOG_OUT:
@@ -40,7 +40,6 @@ export function reducer(state, action) {
                 ...state,
                 word: action.payload,
             }
-
         default:
             return state;
     }
