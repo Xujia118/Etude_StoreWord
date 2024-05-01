@@ -8,8 +8,8 @@ export const ACTIONS = {
   LOG_IN: "login",
   LOG_OUT: "logout",
   IS_LOADING: "loading",
-  DISPLAY_WORD: "updateWord",
-  UPDATE_WORD: "displayWord",
+  DISPLAY_WORD: "displayWord",
+  UPDATE_WORD: "updateWord",
   REPORT_ERROR: "reportError",
   CLEAR_ERROR: "clearError",
 };

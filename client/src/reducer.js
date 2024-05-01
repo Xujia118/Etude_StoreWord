@@ -30,7 +30,16 @@ export function reducer(state, action) {
                 ...state,
                 isLoading: true,
             }
-        
+        case ACTIONS.DISPLAY_WORD:
+            return {
+                ...state,
+                word: action.payload,
+            }
+        case ACTIONS.UPDATE_WORD:
+            return {
+                ...state,
+                word: action.payload,
+            }
 
         default:
             return state;

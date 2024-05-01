@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import FormLogin from "./FormLogin";
 
 import {
@@ -16,9 +16,17 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function checkSession() {
-    fetchSession().then((data) => {
-      console.log(data);
-    });
+    fetchSession()
+      .then((data) => {
+        dispatch({ type: ACTIONS.LOG_IN, payload: data.username });
+        return fetchWord();
+      })
+      .then((data) => {
+        dispatch({ type: ACTIONS.DISPLAY_WORD, payload: data.storedWord });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function onLogin(username) {
@@ -29,7 +37,7 @@ function App() {
         return fetchWord();
       })
       .then((data) => {
-        console.log(data);
+        console.log(data.storedWord);
       })
       .catch((err) => {
         console.log(err);
@@ -43,12 +51,35 @@ function App() {
     });
   }
 
+  function updateWord(newWord) {
+    fetchSession()
+      .then((data) => {
+        dispatch({ type: ACTIONS.LOG_IN, payload: data.username });
+      })
+      .catch((err) => {
+        console.log(err);
+        return Promise.reject(err);
+      })
+      .then(() => {
+        return fetchUpdateWord(newWord);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    checkSession();
+  }, []);
+
   return (
     <div>
       {state.loginStatus === LOGIN_STATUS.NOT_LOGGED_IN && (
         <FormLogin onLogin={onLogin} onLogout={onLogout} />
       )}
-      {state.loginStatus === LOGIN_STATUS.IS_LOGGED_IN && <WordPage />}
+      {state.loginStatus === LOGIN_STATUS.IS_LOGGED_IN && (
+        <WordPage updateWord={updateWord} word={state.word}/>
+      )}
     </div>
   );
 }
