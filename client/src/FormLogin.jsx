@@ -9,7 +9,6 @@ function FormLogin({ onLogin }) {
   }
 
   return (
-    <div>
       <form className="form-login" onSubmit={handleSubmitForm}>
         <input
           className="input-username"
@@ -21,7 +20,6 @@ function FormLogin({ onLogin }) {
         </button>
         {/* <p className="input-error-message">{error}</p> */}
       </form>
-    </div>
   );
 }
 

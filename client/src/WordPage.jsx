@@ -9,7 +9,7 @@ function WordPage({ onLogout, updateWord, word }) {
   }
 
   return (
-    <div>
+    <>
       <h1 className="stored-word">{word}</h1>
       <form className="form-word" onSubmit={handleSubmit}>
         <input
@@ -26,7 +26,7 @@ function WordPage({ onLogout, updateWord, word }) {
       <button className="button-logout" type="button" onClick={onLogout}>
         Logout
       </button>
-    </div>
+    </>
   );
 }
 
