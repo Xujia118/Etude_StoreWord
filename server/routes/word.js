@@ -9,14 +9,14 @@ const authenticate = require("./auth");
 // There is no get all words logic, because each user has only one word
 
 // Get one word
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   const username = authenticate(req, res);
   if (!username) {
     return;
   }
 
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ username: username });
 
     if (user) {
       const storedWord = user.word;
@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Update one word
-router.patch("/:id", async (req, res) => {
+router.patch("/", async (req, res) => {
   const username = authenticate(req, res);
 
   if (!username) {
@@ -44,7 +44,7 @@ router.patch("/:id", async (req, res) => {
       { _id: req.params.id },
       { $set: { word: newWord } }
     );
-
+    
     if (user) {
       res.json({ newWord });
     } else {
