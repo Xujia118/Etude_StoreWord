@@ -4,9 +4,8 @@ const router = express.Router();
 const User = require("../schemas/User");
 const authenticate = require("./auth");
 
-// word is stored in users collection
-// So find the user and then find the word
-// There is no get all words logic, because each user has only one word
+// There is no GET all words logic, because each user has only one word
+// There is no DELETE in this simple etude
 
 // Get one word
 router.get("/", async (req, res) => {
@@ -16,7 +15,8 @@ router.get("/", async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ username: username });
+    const user = await User.findOne({ username }); 
+    // It should be 'username: username', but since it's repeat we can make short
 
     if (user) {
       const storedWord = user.word;
@@ -44,6 +44,9 @@ router.patch("/", async (req, res) => {
       { username: username },
       { $set: { word: newWord } }
     );
+
+    // Unlike GET, await User.method() returns a result object, not a user object
+    // One of its properties is "modifiedCount". If it's 1, the update is successful
     
     if (updatedResult.modifiedCount > 0) {
       res.json({ newWord });

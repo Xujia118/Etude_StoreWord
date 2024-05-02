@@ -33,6 +33,7 @@ export function fetchLogout() {
   return chainPromise(fetched);
 }
 
+// Word
 export function fetchWord() {
   const fetched = fetch("/api/v1/word");
   return chainPromise(fetched);

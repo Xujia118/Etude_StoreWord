@@ -13,22 +13,12 @@ async function userExists(username) {
   try {
     const existingUser = await User.find({ username: username });
 
-    // mongoDB will return an array. If the user does not exist, the array will be empty
+    // mongoDB returns an array. If user does not exist, the array is empty
     return existingUser.length > 0 ? existingUser[0] : null;
     
   } catch (err) {
     console.log(err);
   }
-}
-
-// function getWord(username) {
-//   const existingUser = userExists(username);
-//   return existingUser.word;
-// }
-
-// This is the old way
-function getWord(username) {
-  return users[username];
 }
 
 function validateWord({ username, newWord }) {
@@ -52,6 +42,5 @@ function validateWord({ username, newWord }) {
 module.exports = {
   isValid,
   userExists,
-  getWord,
   validateWord,
 };
