@@ -12,7 +12,6 @@ export function checkSession(dispatch) {
   return function () {
     fetchSession()
       .then((data) => {
-        console.log(data)
         dispatch({ type: ACTIONS.LOG_IN, payload: data.username });
         return fetchWord();
       })

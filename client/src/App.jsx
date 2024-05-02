@@ -8,30 +8,12 @@ import FormLogin from "./FormLogin";
 import WordPage from "./wordPage";
 
 import "./App.css";
-import { fetchSession, fetchWord } from "./services";
-
-import { ACTIONS } from "./constants";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // function checkSession() {
-  //   fetchSession()
-  //     .then((data) => {
-  //       console.log(data);
-  //       dispatch({ type: ACTIONS.LOG_IN, payload: data.username });
-  //       return fetchWord();
-  //     })
-  //     .then((data) => {
-  //       dispatch({ type: ACTIONS.DISPLAY_WORD, payload: data.storedWord });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
   useEffect(() => {
-    checkSession(dispatch)();
+    checkSession(dispatch)(); // checkSession wraps a function, so we invoke the inner function by ()
   }, []);
 
   return (

@@ -40,12 +40,12 @@ router.patch("/", async (req, res) => {
   const { newWord } = req.body;
 
   try {
-    const user = await User.updateOne(
-      { _id: req.params.id },
+    const updatedResult = await User.updateOne(
+      { username: username },
       { $set: { word: newWord } }
     );
     
-    if (user) {
+    if (updatedResult.modifiedCount > 0) {
       res.json({ newWord });
     } else {
       res.status(400).json({ error: "user not found" });
@@ -54,12 +54,5 @@ router.patch("/", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-
-///////////////////////// TEST ////////////////////////////////
-const axios = require("axios");
-
-// Function 
-
 
 module.exports = router;
