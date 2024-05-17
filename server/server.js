@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const serverless = require("serverless-http");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +12,7 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(express.static("./dist"));
+// app.use(express.static("./dist"));
 app.use(express.json());
 app.use(cookieParser());
 

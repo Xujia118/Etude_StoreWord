@@ -50,7 +50,7 @@
 //   return chainPromise(fetched);
 // }
 
-const BACKEND_URL = "etudestoreword-production.up.railway.app";
+const BACKEND_URL = "https://etudestoreword-production.up.railway.app";
 
 function chainPromise(promise) {
   return promise
