@@ -5,7 +5,7 @@ import { LOGIN_STATUS } from "./constants";
 import { checkSession, onLogin, onLogout, updateWord } from "./utils";
 
 import FormLogin from "./FormLogin";
-import WordPage from "./wordPage";
+import WordPage from "./WordPage";
 
 import "./App.css";
 
