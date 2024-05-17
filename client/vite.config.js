@@ -8,6 +8,7 @@ export default defineConfig({
   //   proxy: {
   //     "/api": {
   //       target: "etudestoreword-production.up.railway.app",
+  //       //  target: "http://localhost:3000",
   //     },
   //   },
   // },
