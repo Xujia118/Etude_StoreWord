@@ -24,8 +24,6 @@ app.use("/api/v1/session", sessionRouter);
 const wordRouter = require("./routes/word");
 app.use("/api/v1/word", wordRouter);
 
-module.exports.handler = serverless(app);
-
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
